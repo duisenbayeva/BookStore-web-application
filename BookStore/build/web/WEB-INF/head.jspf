@@ -1,0 +1,50 @@
+<%-- any content can be specified here e.g.: --%>
+<%@page import="domain.User"%>
+<%@page import="db.Repository"%>
+<%@ page pageEncoding="UTF-8" %>
+<meta name="keywords" content="" />
+<meta name="description" content="" />
+<link href="style.css" rel="stylesheet" type="text/css" media="screen" />
+</head>
+<body>
+    <%
+        User u1 = (User) session.getAttribute("user");
+    %>
+    <div id="header-wrapper">
+        <div id="header">
+            <div id="menu">
+                <ul>
+                    <li class="current_page_item"><a href="index.jsp">Home</a></li>
+                    <li><a href="books.jsp">Books</a></li>
+                    <li><a href="authors.jsp">Authors</a></li>
+                    <li><a href="genres.jsp">Ganres</a></li>
+                    <li><a href="publishers.jsp">Publishers</a></li>
+                    <li><a href="index.jsp">Contact</a></li>
+                </ul>
+            </div>
+            <!-- end #menu -->
+            <%
+                if (u1 == null) {
+            %>
+            <div id="search">       
+                <b><h3> <a href = "login.jsp">Login </a>
+                        <label> | </label>
+                        <a href="register.jsp"> Register</a></h3></b>                 
+
+                <%} else {%>
+                <h3><label><%=u1.getUsername()+", "%></label>
+                    <a href="LogoutServlet">logout</a></h3>
+                <%
+                }%>
+            </div>
+            <!-- end #search -->
+        </div>
+        <!-- end #header -->
+    </div>
+    <!-- end #header-wrapper -->
+    <div id="page">
+        <div id="logo">
+            <h1><a href="index.jsp">Book Store</a></h1>
+        </div>
+        <hr/>
+    
